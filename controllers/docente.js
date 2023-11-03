@@ -36,16 +36,12 @@ exports.login = async (req, res, next) => {
     try {
         const docente = await Docente.find(correo);
         if (docente[0].length !== 1) {
-            const error = new Error('Un docente con este correo no pudo ser encontrado');
-            error.statusCode = 401;
-            throw error;
+            return res.status(401).json({ error: 'Un docente con este correo no pudo ser encontrado' });
         }
         const storedDocente = docente[0][0];
         const isEqual = await bcrypt.compare(pass, storedDocente.Pass);
         if (!isEqual) {
-            const error = new Error('Contraseña incorrecta');
-            error.statusCode = 401;
-            throw error;
+            return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
         const token = jwt.sign(
             {
@@ -60,5 +56,6 @@ exports.login = async (req, res, next) => {
         if (!err.statusCode) {
             err.statusCode = 500;
         }
+        next(err);
     }
 }
