@@ -1,12 +1,13 @@
 const db = require('../util/database');
-module.exports = class Reserva{
+class Reserva{
     constructor(
         fechaRegistro,
         fechaReserva,
         inicioReserva,
         finReserva,
         cantidadLicenciasReservadas,
-        idLaboratorioAsignatura,
+        idLaboratorio,
+        idAsignatura,
         estado){
             this.idReserva = idReserva;
             this.fechaRegistro = fechaRegistro;
@@ -14,10 +15,24 @@ module.exports = class Reserva{
             this.inicioReserva = inicioReserva;
             this.finReserva = finReserva;
             this.cantidadLicenciasReservadas = cantidadLicenciasReservadas;
-            this.idLaboratorioAsignatura = idLaboratorioAsignatura;
+            this.idLaboratorio = idLaboratorio;
+            this.idAsignatura = idAsignatura;
             this.estado = estado;
     }
     static reservasDocente(DNI_Docente) {
         return db.execute('CALL getReservasByDocente(?)',[DNI_Docente]);
     }
+    static guardarReserva(Reserva) {
+        return db.execute('CALL postReserva(?, ?, ?, ?, ?, ?);',
+        [
+            Reserva.fechaRegistro,
+            Reserva.fechaReserva,
+            Reserva.inicioReserva,
+            Reserva.finReserva,
+            Reserva.cantidadLicencias,
+            Reserva.idLaboratorio,
+            Reserva.idAsignatura
+        ]);
+    }
 }
+module.exports = Reserva;
