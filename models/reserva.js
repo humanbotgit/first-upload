@@ -25,7 +25,6 @@ class Reserva{
     static guardarReserva(Reserva) {
         return db.execute('CALL postReserva(?, ?, ?, ?, ?, ?);',
         [
-            Reserva.fechaRegistro,
             Reserva.fechaReserva,
             Reserva.inicioReserva,
             Reserva.finReserva,
