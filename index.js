@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/docente', docenteRoutes);
+app.get('/', (req, res) => { res.send('Funciona yay');});
 app.use(errorController.get404);
 app.use(errorController.get500);
 app.listen(port, () => console.log(`Escuchando en el puerto ${port}`));
