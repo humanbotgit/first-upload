@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const Reserva = require('../models/reserva');
 exports.reservaDocente = async (req,res,next) => {
-    const dni_docente=req.param.id;
+    const dni_docente=req.params.id;
     console.log(dni_docente);
     try {
         const[[allReservas]]=await Reserva.reservasDocente(dni_docente);
