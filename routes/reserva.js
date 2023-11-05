@@ -4,7 +4,7 @@ const router = express.Router();
 const reservaController = require('../controllers/reserva')
 const auth = require('../middleware/auth');
 
-router.get('/docente/:DNI_Docente',reservaController.reservaDocente);
+router.get('/:DNI_Docente',reservaController.reservaDocente);
 router.post('/',[
     auth,
     body('Fecha_Reserva').trim().not().isEmpty(),
