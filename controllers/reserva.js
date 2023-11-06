@@ -24,6 +24,8 @@ exports.postReserva =async (req,res,next) => {
    const cantidadLicencias = req.body.Cantidad_Licencias_Reservadas;
    const idLaboratorio = req.body.ID_Laboratorio;
    const idAsignatura = req.body.ID_Asignatura;
+   console.log(fechaReserva);
+   
     try{
         const reservaDetails ={
             Fecha_Reserva: fechaReserva,
