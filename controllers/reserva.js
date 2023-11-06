@@ -24,8 +24,6 @@ exports.postReserva =async (req,res,next) => {
    const cantidadLicencias = req.body.Cantidad_Licencias_Reservadas;
    const idLaboratorio = req.body.ID_Laboratorio;
    const idAsignatura = req.body.ID_Asignatura;
-   console.log(fechaReserva);
-   
     try{
         const reservaDetails ={
             Fecha_Reserva: fechaReserva,
@@ -37,6 +35,12 @@ exports.postReserva =async (req,res,next) => {
 
         }
         const result=await Reserva.guardarReserva(reservaDetails)
+        console.log(fechaReserva);
+        console.log(inicioReserva);
+        console.log(finReserva);
+        console.log(cantidadLicencias);
+        console.log(idLaboratorio);
+        console.log(idAsignatura);
         res.status(201).json({message:'Reserva realizada'})
     }catch(err){
         if (!err.statusCode) {
