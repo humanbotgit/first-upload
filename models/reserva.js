@@ -23,7 +23,7 @@ class Reserva{
             Reserva.Fecha_Reserva,
             Reserva.Inicio_Reserva,
             Reserva.Fin_Reserva,
-            Reserva.cantidadLicenciasReservadas,
+            Reserva.Cantidad_Licencias_Reservadas,
             Reserva.ID_Laboratorio,
             Reserva.ID_Asignatura
         ]);
