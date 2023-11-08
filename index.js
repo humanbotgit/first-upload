@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const docenteRoutes = require('./routes/docente');
 const reservaRoutes= require('./routes/reserva');
+const laboratorioRoutes = require('./routes/laboratorio');
+const asignaturaRoutes = require('./routes/asignatura');
 const errorController = require('./controllers/error');
 
 const app = express();
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
 
 app.use('/docente', docenteRoutes);
 app.use('/reserva', reservaRoutes);
+app.use('/laboratorio',laboratorioRoutes);
+app.use('/asignatura',asignaturaRoutes)
 app.get('/', (req, res) => { res.send('Funciona yay');});
 app.use(errorController.get404);
 app.use(errorController.get500);
