@@ -5,9 +5,5 @@ const laboratorioController = require('../controllers/laboratorio');
 
 router.get('/cantlicencia/:id_laboratorio', laboratorioController.cantidadLicencias);
 router.get('/licencias/:id_laboratorio', laboratorioController.licenciasLaboratorio);
-router.get('/labas/',[
-    body('id_asignatura'),
-    body('dni_docente') 
-],
-laboratorioController.laboratoriosByAsignatura);
+router.get('/labas/:id_asignatura',laboratorioController.laboratoriosByAsignatura);
 module.exports = router;

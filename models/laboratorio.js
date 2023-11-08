@@ -21,10 +21,10 @@ class Laboratorio{
             [ID_Laboratorio]
         );
     }
-    static getLaboratoriosByAsignatura( ID_Asignatura,DNI_Docente) {
+    static getLaboratoriosByAsignatura( ID_Asignatura) {
         return db.execute(
-            'CALL getLaboratoriosAsignatura(?,?)',
-            [ID_Asignatura,DNI_Docente,]
+            'Call getLaboratoriosAsignatura(?);',
+            [ID_Asignatura]
         );
     }
 }

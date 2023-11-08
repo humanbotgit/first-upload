@@ -37,13 +37,10 @@ exports.laboratoriosByAsignatura = async (req, res, next) => {
     if(!errors.isEmpty()){
         return res.status(422).json({ errors: errors.array() });
     }
-    const {
-        id_asignatura,
-        dni_docente
-    } = req.body;
+    const id_asignatura = req.params.id_asignatura;
     try {
         const [[laboratorios]] = await Laboratorio
-        .getLaboratoriosByAsignatura(id_asignatura, dni_docente);
+        .getLaboratoriosByAsignatura(id_asignatura);
         res.status(200).json(laboratorios );
     } catch (err) {
         if (!err.statusCode) {
