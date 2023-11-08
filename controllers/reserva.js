@@ -21,7 +21,7 @@ exports.postReserva =async (req,res,next) => {
    const fechaReserva= req.body.Fecha_Reserva;
    const inicioReserva = req.body.Inicio_Reserva;
    const finReserva = req.body.Fin_Reserva;
-   const cantidadLicencias = req.body.Cantidad_Licencias_Reservadas;
+   const cantidadLicenciasReservadas = req.body.Cantidad_Licencias_Reservadas;
    const idLaboratorio = req.body.ID_Laboratorio;
    const idAsignatura = req.body.ID_Asignatura;
     try{
@@ -29,7 +29,7 @@ exports.postReserva =async (req,res,next) => {
             Fecha_Reserva: fechaReserva,
             Inicio_Reserva: inicioReserva,
             Fin_Reserva: finReserva,
-            Cantidad_Licencias_Reservadas: cantidadLicencias,
+            Cantidad_Licencias_Reservadas: cantidadLicenciasReservadas,
             ID_Laboratorio: idLaboratorio,
             ID_Asignatura: idAsignatura
 
