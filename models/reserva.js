@@ -28,7 +28,7 @@ class Reserva{
             Reserva.fechaReserva,
             Reserva.inicioReserva,
             Reserva.finReserva,
-            Reserva.cantidadLicencias,
+            Reserva.cantidadLicenciasReservadas,
             Reserva.idLaboratorio,
             Reserva.idAsignatura
         ]);
