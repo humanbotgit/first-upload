@@ -26,12 +26,12 @@ exports.postReserva =async (req,res,next) => {
    const idAsignatura = req.body.ID_Asignatura;
     try{
         const reservaDetails ={
-            Fecha_Reserva: fechaReserva,
-            Inicio_Reserva: inicioReserva,
-            Fin_Reserva: finReserva,
-            Cantidad_Licencias_Reservadas: cantidadLicenciasReservadas,
-            ID_Laboratorio: idLaboratorio,
-            ID_Asignatura: idAsignatura
+            fechaReserva: fechaReserva,
+            inicioReserva: inicioReserva,
+            finReserva: finReserva,
+            cantidadLicenciasReservadas: cantidadLicenciasReservadas,
+            idLaboratorio: idLaboratorio,
+            idAsignatura: idAsignatura
 
         }
         const result=await Reserva.guardarReserva(reservaDetails)
