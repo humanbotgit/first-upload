@@ -7,7 +7,7 @@ exports.reservaDocente = async (req, res, next) => {
         const formattedReservas = allReservas.map(reserva => ({
             ...reserva,
             Fecha_Registro: new Date(reserva.Fecha_Registro).toLocaleString(),
-            Fecha_Reserva: new Date(reserva.Fecha_Reserva).toLocaleString('es-ES')
+            Fecha_Reserva: new Date(reserva.Fecha_Reserva).toISOString().split('T')[0]
         }));
         res.status(200).json(formattedReservas);
     } catch (err) {
