@@ -1,17 +1,23 @@
 const { validationResult } = require('express-validator');
 const Reserva = require('../models/reserva');
-exports.reservaDocente = async (req,res,next) => {
-    const dni_docente=req.params.id;
+exports.reservaDocente = async (req, res, next) => {
+    const dni_docente = req.params.id;
     try {
-        const[[allReservas]]=await Reserva.reservasDocente(dni_docente);
-        res.status(200).json(allReservas);
+        const [[allReservas]] = await Reserva.reservasDocente(dni_docente);
+        const formattedReservas = allReservas.map(reserva => ({
+            ...reserva,
+            Fecha_Registro: new Date(reserva.Fecha_Registro).toLocaleString(),
+            Fecha_Reserva: new Date(reserva.Fecha_Reserva).toLocaleString()
+        }));
+        res.status(200).json(formattedReservas);
     } catch (err) {
-        if(!err.statusCode){
-            err.statusCode=500;
+        if (!err.statusCode) {
+            err.statusCode = 500;
         }
         next(err);
     }
 }
+
 exports.postReserva =async (req,res,next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
