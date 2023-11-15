@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
 const Reserva = require('../models/reserva');
 exports.reservaDocente = async (req, res, next) => {
     const dni_docente = req.params.id;
@@ -41,6 +42,28 @@ exports.postReserva =async (req,res,next) => {
             ID_Asignatura: ID_Asignatura
         }
         const result=await Reserva.guardarReserva(reservaDetails)
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user:'drunkducky892@gmail.com',
+                pass:'mishuoesgato'
+            }
+        })
+        const correoDocente=await Docente.getCorreo(ID_Asignatura);
+        const mailOptions={
+            from:'jarancibia@continental.edu.pe',
+            to: correoDocente,
+            subject: 'Reserva Realizada',
+            text: 'Tu reserva fue realizada aquí las licencias'
+        }
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Correo enviado: ' + info.response);
+            }
+        });
+
         res.status(201).json({message:'Reserva realizada'})
     }catch(err){
         if (!err.statusCode) {

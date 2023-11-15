@@ -30,6 +30,12 @@ class Docente {
             [Docente.DNI_Docente, Docente.Apellidos, Docente.Nombres, Docente.Correo, Docente.Pass]
         );
     }
+    static getCorreo(DNI_Docente){
+        return db.execute(
+            'CALL getCorreoDocente(?)',
+            [ID_Asignatura]
+        )
+    }
 }
 
 module.exports = Docente;
