@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 const Reserva = require('../models/reserva');
+const Docente = require('../models/docente')
 exports.reservaDocente = async (req, res, next) => {
     const dni_docente = req.params.id;
     try {
@@ -32,6 +33,8 @@ exports.postReserva =async (req,res,next) => {
         ID_Laboratorio,
         ID_Asignatura
     } = req.body;
+    const asig =req.body.ID_Asignatura;
+    
     try{
         const reservaDetails ={
             Fecha_Reserva: Fecha_Reserva,
@@ -43,13 +46,16 @@ exports.postReserva =async (req,res,next) => {
         }
         const result=await Reserva.guardarReserva(reservaDetails)
         const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             service: 'gmail',
             auth: {
                 user:'drunkducky892@gmail.com',
                 pass:'olulo1456'
             }
         })
-        const correoDocente=await Docente.getCorreo(ID_Asignatura);
+        const correoDocente=await Docente.getCorreo(asig);
         const mailOptions={
             from:'jarancibia@continental.edu.pe',
             to: correoDocente,

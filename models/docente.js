@@ -30,7 +30,7 @@ class Docente {
             [Docente.DNI_Docente, Docente.Apellidos, Docente.Nombres, Docente.Correo, Docente.Pass]
         );
     }
-    static getCorreo(DNI_Docente){
+    static getCorreo(ID_Asignatura){
         return db.execute(
             'CALL getCorreoDocente(?)',
             [ID_Asignatura]
