@@ -46,7 +46,7 @@ exports.postReserva =async (req,res,next) => {
             service: 'gmail',
             auth: {
                 user:'drunkducky892@gmail.com',
-                pass:'mishuoesgato'
+                pass:'olulo1456'
             }
         })
         const correoDocente=await Docente.getCorreo(ID_Asignatura);
