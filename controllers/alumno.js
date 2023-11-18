@@ -1,6 +1,6 @@
 const Alumno = require('../models/alumno');
 exports.selectAlumno=async(req,res,next)=>{
-    const dni = req.params.dni_alumno;
+    const dni = req.params.dni;
     try {
         const [Alumno]= await Alumno.selectAlumno(dni);
         res.status(200).json(Alumno);
