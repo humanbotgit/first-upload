@@ -12,7 +12,9 @@ class Alumno{
         this.apellidos_alumno=apellidos_alumno;
     }
     static selectAlumno(dni_alumno){
-        return db.execute('SELECT * FROM alumno WHERE dni_alumno = ?', [dni_alumno])
+        return db.execute(
+            'SELECT * FROM alumno WHERE dni_alumno = ?',
+             [dni_alumno])
     }
 }
 module.exports=Alumno;
