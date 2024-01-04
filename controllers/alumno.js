@@ -8,6 +8,7 @@ exports.selectAlumno=async(req,res,next)=>{
     } catch (err) {
         if (!err.statusCode) {
             err.statusCode = 500;
+            console.log(dni);
         }
         next(err);
     }
