@@ -12,9 +12,7 @@ class Alumno{
         this.apellidos_alumno=apellidos_alumno;
     }
     static async selectAlumno(dni_alumno){
-            await db.execute('SELECT * FROM alumno WHERE dni_alumno = ?', [dni_alumno]);
-              await db.execute('INSERT INTO registro (dni_alumno, hora_escaneo, nombres_alumno, apellidos_alumno) VALUES (?, NOW(), ?, ?)',
-                [Alumno.dni_alumno, Alumno.nombres_alumno, Alumno.apellidos_alumno]);
+            return db.execute('SELECT * FROM alumno WHERE dni_alumno = ?', [dni_alumno]);
     }
 }
 module.exports=Alumno;
