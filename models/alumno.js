@@ -11,15 +11,15 @@ class Alumno{
         this.nombres_alumno=nombres_alumno;
         this.apellidos_alumno=apellidos_alumno;
     }
-    static async selectAlumno(dni_alumno){
-
-            // Realizar el SELECT en la tabla alumno
-            await db.execute('SELECT * FROM alumno WHERE dni_alumno = ?', [dni_alumno]);
-            // Verificar si se encontraron resultados en la tabla alumno
-              // Insertar un registro en la tabla registro con la hora actual y otros datos del alumno
-              await db.execute('INSERT INTO registro (dni_alumno, hora_escaneo, nombres_alumno, apellidos_alumno) VALUES (?, NOW(), ?, ?)',
-                [Alumno.dni_alumno, Alumno.nombres_alumno, Alumno.apellidos_alumno]);
-    
+    static selectAlumno(dni_alumno){
+        return db.execute(
+            'SELECT * FROM alumno WHERE dni_alumno = ?',
+                                 [dni_alumno])    
+    }
+    static insertRegistro(dni_alumno){
+        return db.execute(
+            'CALL InsertarRegistroPorDNI(?)?',
+                                 [dni_alumno])
     }
 }
 module.exports=Alumno;
