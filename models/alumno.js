@@ -14,5 +14,8 @@ class Alumno{
     static async selectAlumno(dni_alumno){
             return db.execute('SELECT * FROM alumno WHERE dni_alumno = ?', [dni_alumno]);
     }
+    static async InsertarRegistroPorDNI(dni_alumno){
+        return db.execute('CALL InsertarRegistroPorDNI', [dni_alumno]);
+}
 }
 module.exports=Alumno;
