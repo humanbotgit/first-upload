@@ -27,5 +27,6 @@ router.post(
     docenteController.signup
 );
 router.post('/login',docenteController.login)
-router.get('/correo/:correo',docenteController.getDNI)
+router.get('/correo/:correo',docenteController.getDNI)//reservas
+router.get('/correodocente/:correo',docenteController.getDNIDocente)
 module.exports = router;

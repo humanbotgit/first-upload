@@ -42,6 +42,12 @@ class Docente {
             [Correo]
         )
     }
+    static getDNIDocente(Correo){
+        return db.execute(
+            'CALL getDocenteDNI(?)',
+            [Correo]
+        )
+    }
 }
 
 module.exports = Docente;
