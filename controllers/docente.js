@@ -60,7 +60,7 @@ exports.login = async (req, res, next) => {
     }
 }
 exports.getDNI = async (req, res, next) => {
-    const correo = req.params.Correo;
+    const correo = req.params.correo;
     try {
         const dni = await Docente.getDNI(correo);
         res.status(201).json(dni);
