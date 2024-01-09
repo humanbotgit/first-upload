@@ -15,4 +15,13 @@ router.post('/',[
     body('ID_Asignatura')
 ], reservaController.postReserva
 );
+router.post('/reserva2',[
+    body('Fecha_Reserva'),
+    body('Inicio_Reserva'),
+    body('Fin_Reserva'),
+    body('Cantidad_Licencias_Reservadas'),
+    body('ID_Laboratorio'), 
+    body('ID_Asignatura')
+], reservaController.postReserva2
+);
 module.exports = router;
