@@ -65,7 +65,7 @@ exports.getDNI = async (req, res, next) => {
         const [[infoAlumno]] = await Docente.getDNI(correo);
         console.log("Si funciona");
         res.status(201).json(infoAlumno);
-    } catch (error) {
+    } catch (err) {
         if (!err.statusCode) {
             err.statusCode = 500;
         }
