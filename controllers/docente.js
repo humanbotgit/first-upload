@@ -59,3 +59,15 @@ exports.login = async (req, res, next) => {
         next(err);
     }
 }
+exports.getDNI = async (req, res, next) => {
+    const correo = req.params.Correo;
+    try {
+        const dni = await Docente.getDNI(correo);
+        res.status(201).json(correo);
+    } catch (error) {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+}
