@@ -15,7 +15,7 @@ class Reserva{
             this.ID_Asignatura = ID_Asignatura;
     }
     static reservasDocente(DNI_Docente) {
-        return db.execute('CALL getDniByCorreo(?)',[DNI_Docente]);
+        return db.execute('CALL getReservasByDocente(?)',[DNI_Docente]);
     }
     static guardarReserva(Reserva) {
         return db.execute('CALL postReserva(?, ?, ?, ?, ?, ?);',
